@@ -1,0 +1,53 @@
+[32m[1m--------------------------------[0m
+[32m[1m* CSE 6220 Autograder - lab3[0m
+[32m[1m--------------------------------[0m
+[32m[1m* Checking provided file consistency[0m
+Checking [Makefile]...[32m[1mPASSES[0m
+Checking [grader.sh]...[32m[1mPASSES[0m
+Checking [autograder/001_cleanup_1.test]...[32m[1mPASSES[0m
+Checking [autograder/002_gen_1.test]...[32m[1mPASSES[0m
+Checking [autograder/003_public_1.test]...[32m[1mPASSES[0m
+Checking [autograder/004_compare_1.test]...[32m[1mPASSES[0m
+Checking [autograder/011_cleanup_2.test]...[32m[1mPASSES[0m
+Checking [autograder/012_gen_2.test]...[32m[1mPASSES[0m
+Checking [autograder/013_public_2.test]...[32m[1mPASSES[0m
+Checking [autograder/014_compare_2.test]...[32m[1mPASSES[0m
+Checking [autograder/cleanup.sh]...[32m[1mPASSES[0m
+Checking [autograder/compare.sh]...[32m[1mPASSES[0m
+Checking [autograder/dat001.ref]...[32m[1mPASSES[0m
+Checking [autograder/dat002.ref]...[32m[1mPASSES[0m
+Checking [autograder/master.config]...[32m[1mPASSES[0m
+Checking [utils/naivesort.c]...[32m[1mPASSES[0m
+Checking [utils/teragen_main.c]...[32m[1mPASSES[0m
+Checking [utils/terametrics.c]...[32m[1mPASSES[0m
+Checking [utils/terarec.c]...[32m[1mPASSES[0m
+Checking [utils/terarec.h]...[32m[1mPASSES[0m
+Checking [utils/terasort_main.c]...[32m[1mPASSES[0m
+Checking [utils/teravalidate.c]...[32m[1mPASSES[0m
+Checking [utils/teravalidate_main.c]...[32m[1mPASSES[0m
+[32m[1m* Building solution[0m
+rm -f *.o teragen terasort teravalidate terametrics naivesort data.dat
+mpicc -std=c99 -fopenmp -Iutils -O0 -g -Wall -o terasort utils/terasort_main.c student/terasort.c utils/terarec.c 
+mpicc -std=c99 -fopenmp -Iutils -O0 -g -Wall -o teragen utils/teragen_main.c utils/terarec.c 
+mpicc -std=c99 -fopenmp -Iutils -O0 -g -Wall -o teravalidate utils/teravalidate_main.c utils/teravalidate.c utils/terarec.c 
+[32m[1m* Checking status of compilation[0m
+[32m[1m=> Build successful - [+30 points][0m
+* Running solution
+[33m[1m=> [cleanup_public_1] Running [autograder/cleanup.sh] with input: autograder/dat001.student[0m
+[33m[1m[0m[32m[1m=> [cleanup_public_1] PASSED - Awarded [+0 points][0m
+[33m[1m=> [generate_public_1] Running [] with input: -np 4 ./teragen -c 10000 -f autograder/dat001.student[0m
+[33m[1m[0m[32m[1m=> [generate_public_1] PASSED - Awarded [+0 points][0m
+[33m[1m=> [public_1] Running [] with input: -np 4 ./terasort -f autograder/dat001.student[0m
+[33m[1m[0m[32m[1m=> [public_1] PASSED - Awarded [+0 points][0m
+[33m[1m=> [compare_1] Running [autograder/compare.sh] with input: autograder/dat001.student autograder/dat001.ref[0m
+[33m[1m[0m[32m[1m=> [compare_1] PASSED - Awarded [+10 points][0m
+[33m[1m=> [cleanup_public_2] Running [autograder/cleanup.sh] with input: autograder/dat002.student[0m
+[33m[1m[0m[32m[1m=> [cleanup_public_2] PASSED - Awarded [+0 points][0m
+[33m[1m=> [generate_public_2] Running [] with input: -np 3 ./teragen -c 273 -f autograder/dat002.student[0m
+[33m[1m[0m[32m[1m=> [generate_public_2] PASSED - Awarded [+0 points][0m
+[33m[1m=> [public_2] Running [] with input: -np 3 ./terasort -f autograder/dat002.student[0m
+[33m[1m[0m[32m[1m=> [public_2] PASSED - Awarded [+0 points][0m
+[33m[1m=> [compare_2] Running [autograder/compare.sh] with input: autograder/dat002.student autograder/dat002.ref[0m
+[33m[1m[0m[32m[1m=> [compare_2] PASSED - Awarded [+10 points][0m
+--------------------------------
+[32m[1mTotal Score: 50[0m
